@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+android:background="@color/colorAccent"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimaryDark"
+
+        android:layout_weight="1"
+
+        android:gravity="center"
+        android:text="Welcome X"
+
+        android:textColor="@color/colorAccent"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="24sp"
+         />
+
+
+        <ImageButton
+            android:id="@+id/filterBy"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/filter"
+
+
+            android:background="@color/colorPrimaryDark"
+/>
+
+</LinearLayout>
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:queryHint="Search by name"
+
+        android:background="@color/colorAccent"
+
+    />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:background="@drawable/shape"
+
+        android:layout_height="match_parent"
+
+        >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+</LinearLayout>

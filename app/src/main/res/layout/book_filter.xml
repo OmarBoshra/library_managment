@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:padding="10dp"
+    android:background="@drawable/shape"
+
+    >
+<!--filter by or details-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:id="@+id/sdt"
+        android:padding="8dp"
+
+
+
+
+        android:text="Filter By"
+
+        />
+
+    <RadioGroup
+        android:id="@+id/filterDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+
+        android:choiceMode="multipleChoice"
+
+
+        android:textAllCaps="false">
+
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:text="Book Name"
+           />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:text="Book Category"
+
+
+
+            />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+
+            android:text="Book Author"
+
+
+
+            />
+    </RadioGroup>
+
+
+
+
+</LinearLayout>

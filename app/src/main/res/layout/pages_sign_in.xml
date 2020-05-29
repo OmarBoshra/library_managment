@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="Sign in"
+
+        android:textColor="@color/colorAccent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="24sp"
+    />
+
+    <EditText
+        android:id="@+id/name"
+
+        android:padding="4dp"
+
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:hint="E-mail"
+
+        android:textColorHint="@color/graybrown"
+        android:textSize="20dp"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+
+android:inputType="textWebEmailAddress"
+
+        android:textColor="@color/darkrgraybrown"
+        android:textStyle="italic"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:textSize="20dp"
+
+        android:padding="4dp"
+
+        android:textColorHint="@color/graybrown"
+
+
+
+
+        android:background="@color/colorAccent"
+
+        android:textColorHighlight="@android:color/holo_red_light"
+        android:textColor="@color/darkrgraybrown"
+        android:textStyle="italic"
+        android:id="@+id/age"
+
+
+        android:inputType="textVisiblePassword"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.28dp"
+        android:background="@android:color/black"
+        ></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:gravity="center|bottom"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.28dp"
+            android:background="@android:color/black"
+            ></View>
+
+        <Button
+
+
+            android:layout_margin="8dp"
+
+            android:id="@+id/register"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+
+            android:gravity="center"
+            android:text="Register"
+
+            android:textColor="@color/colorAccent"
+
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+            android:typeface="serif"
+
+          />
+
+        <Button
+
+            android:id="@+id/Sc"
+
+
+            android:visibility="gone"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="Save Changes"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+            android:typeface="serif" />
+
+        <Button
+
+            android:layout_margin="8dp"
+
+
+            android:id="@+id/login"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+
+
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="LogIn"
+            android:textAllCaps="false"
+
+            android:textColor="@color/colorAccent"
+
+            android:typeface="serif" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

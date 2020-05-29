@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/abril_fatface</item>
+        <item name="radioButtonStyle">@style/RadioButtons</item>
+
+
+    </style>
+
+    <style name="AppTheme_lists" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:textColor">@android:color/white</item>
+
+
+
+
+    </style>
+
+    <style name="RadioButtons" parent="android:Widget.CompoundButton.RadioButton">
+
+        <item name="android:buttonTint" tools:ignore="NewApi">@color/darkrgraybrown</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+
+
+
+    </style>
+
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:padding="10dp"
+    android:background="@drawable/shape"
+
+    >
+<!--filter by or details-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:id="@+id/sdt"
+        android:padding="8dp"
+
+
+        android:text="Book details"
+        />
+
+    <TextView
+        android:id="@+id/bookDetails"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary"
+        android:choiceMode="multipleChoice"
+
+        android:layout_weight="1"
+
+        android:textAllCaps="false" />
+    <LinearLayout
+
+        android:id="@+id/Buttons"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+
+        >
+        <Button
+            android:id="@+id/borrowBook"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Borrow Book"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="4dp"
+android:layout_weight="1"
+
+            android:layout_margin="4dp"
+
+
+
+            android:textColor="@color/colorAccent"
+
+
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
