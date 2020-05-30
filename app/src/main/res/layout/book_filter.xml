@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="4dp"
 
-        android:choiceMode="multipleChoice"
+        android:choiceMode="singleChoice"
 
 
         android:textAllCaps="false">

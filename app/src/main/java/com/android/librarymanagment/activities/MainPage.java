@@ -28,8 +28,6 @@ public class MainPage extends AppCompatActivity implements BooksAdapter.Selected
 
   showingDefaultBooksList();
 
-  buttons();
-
         // TODO: 5/27/2020  add entry and students
         // TODO: 5/27/2020  show lanuages
         // TODO: 5/27/2020  show publication & editions
@@ -82,11 +80,7 @@ db.close();
         * */
     }
 
-    private void buttons() {
 
-        Button Register = findViewById(R.id.register);
-
-    }
 
     private void showingDefaultBooksList() {
         RecyclerView recyclerView = findViewById(R.id.recycleView);

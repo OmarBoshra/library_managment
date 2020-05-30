@@ -21,6 +21,86 @@
 
 
 
+        <EditText
+
+            android:id="@+id/user_name"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:hint="Name"
+
+            android:padding="4dp"
+            android:textColorHint="@color/graybrown"
+
+            android:textSize="20dp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkrgraybrown"
+
+            android:text="Select user type"
+
+            android:textColor="@color/colorAccent"
+
+            android:gravity="center"
+            android:padding="4dp"
+
+            android:textColorHint="@color/graybrown"
+
+            android:textSize="20dp" />
+
+
+
+
+            <RadioGroup
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+
+
+                >
+
+            <RadioButton
+
+                android:id="@+id/choice_Student"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="Student"
+
+
+
+                />
+
+            <RadioButton
+                android:id="@+id/choice_Librarian"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="Librarian"
+
+                />
+
+            <RadioButton
+                android:id="@+id/choice_FacultyStaff"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="Faculty staff"
+
+                />
+            </RadioGroup>
+
     <EditText
         android:id="@+id/email"
 
@@ -124,28 +204,6 @@
             android:typeface="serif"
             android:visibility="gone" />
 
-        <Button
-
-            android:id="@+id/login"
-
-
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-
-
-            android:background="@color/colorPrimaryDark"
-
-
-            android:gravity="center"
-            android:text="LogIn"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
-
-            android:textColor="@color/colorAccent"
-
-            android:typeface="serif" />
 
     </LinearLayout>
 

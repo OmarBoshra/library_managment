@@ -231,7 +231,7 @@ public class dataBase extends SQLiteOpenHelper {
 
             //SAMPLE DATA
             //books
-            db.execSQL("INSERT INTO   books   (  title  ,  acquired  , duration  ,  top_rated  ) Values ('mirdad',1,'2020-09-03','1')");
+            db.execSQL("INSERT INTO   books   (  title  ,  acquired  , duration  ,  top_rated  ) Values ('mirdad',1,'01-03','1')");
 
             //Users
             db.execSQL("INSERT INTO   users   (  name  ,  user_type  , email  ,  password  ) Values ('omar',0,'osarious2@gmail.com','123456')");
@@ -240,7 +240,43 @@ public class dataBase extends SQLiteOpenHelper {
 
 // TODO: GENERAL
 
+    public void register(String email,String password,String user_name,int user_type){
 
+
+        SQLiteDatabase db =getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+
+
+        values.put(this.USERS_NAME, user_name);
+        values.put(this.USERS_EMAIL, email);
+        values.put(this.USERS_PASSWORD,password );
+        values.put(this.USERS_USER_TYPE,user_type );
+
+        db.insert(this.TABLE_ENTRIES, null, values);
+
+        db.close();
+
+    }
+
+    public String signIn(String email,String password){
+
+
+        Cursor cursor = getWritableDatabase().rawQuery("SELECT "+USERS_NAME+" FROM " + dataBase.TABLE_USERS+ " WHERE "+USERS_EMAIL+"=? AND "+USERS_PASSWORD+"=?",new String [] {email, password});
+
+
+
+        if(cursor.getCount()==1){
+            cursor.moveToFirst();
+
+            String name =cursor.getString(0);
+            cursor.close();
+            close();
+           return  name;
+        }else
+            return "";
+
+    }
 
 //METHODS
 
@@ -287,7 +323,7 @@ public class dataBase extends SQLiteOpenHelper {
 
     db.insert(this.TABLE_ENTRIES, null, values);
 
-
+        db.close();
 }
 
 
