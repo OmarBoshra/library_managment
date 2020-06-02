@@ -19,16 +19,6 @@ public class BookModel implements Serializable {
         this.top_rated = top_rated;
     }
 
-    @Override
-    public String toString() {
-        return "BookModel{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", acquired=" + acquired +
-                ", duration='" + duration + '\'' +
-                ", top_rated=" + top_rated +
-                '}';
-    }
 
     public void setId(int id) {
         this.id = id;

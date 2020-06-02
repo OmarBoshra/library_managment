@@ -53,7 +53,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.UsersAdapter
         holder.bookName.setText(book_name);
         holder.topRated.setText(top_rated==1?"⭐":"");
         holder.acquired.setText(book_acquired==0?"purchase":book_acquired==1?"donation":"loan");
-        holder.duration.setText(book_duration);
+        holder.duration.setText("Duration in days "+book_duration);
 
     }
 
@@ -79,10 +79,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.UsersAdapter
 
                     List<BookModel> resultData = new ArrayList<>();
 
-                    for(BookModel userModel: getBookModelListFiltered){
+                    for(BookModel bookModel: getBookModelListFiltered){
                         SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
 
                     Boolean isCountry= pref.getBoolean("iscountry",false);
+
+                    if(bookModel.getTitle().toLowerCase().contains(searchChr))
+                        resultData.add(bookModel);
 
 //                        if(isCountry?userModel.getCountry().toLowerCase().contains(searchChr):userModel.getCity_address().toLowerCase().contains(searchChr)){
 //                            resultData.add(userModel);

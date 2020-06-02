@@ -11,20 +11,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.librarymanagment.R;
 import com.android.librarymanagment.dataBase;
 import com.android.librarymanagment.models.BookModel;
 import com.android.librarymanagment.ui.BooksAdapter;
 
+import java.text.ParseException;
+
 public class MainPage extends AppCompatActivity implements BooksAdapter.SelectedUser
 {
 
+    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pages_main);
+
+
+
+
+            userID= getIntent().getStringExtra("user_id");
+           String userName= getIntent().getStringExtra("user_name");
+
+
+        TextView header = findViewById(R.id.header);
+
+        header.setText(new StringBuilder().append("Welcome ").append(userName).toString());
 
   showingDefaultBooksList();
 
@@ -38,46 +54,7 @@ public class MainPage extends AppCompatActivity implements BooksAdapter.Selected
         // TODO: 5/27/2020  make sure to add triggers after insert and delete
         // TODO: 5/28/2020  add button for lib statistics
         // TODO: 5/28/2020  add button for fines
-        /*SELECT Date('now','+1 month','-1 day')
 
-        *   data data = new data(Main.this);
-        SQLiteDatabase db = data.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + data.Books, null);
-        *  ContentValues values = new ContentValues();
-
-            values.put(data.trash, "T");
-            db.insert(data.Books, null, values);
-            *             db.update(data.Table3, null, values);
-            *             db.delete(data.Table3, null, values);
-
-            *        cursor = db.query(data.Books, new String[]{"MAX(" + data.serial + ")"}, null, null, null, null, null);
-
-            *
- cursor=db.rawQuery("SELECT id2 ,X,Y" + " FROM " + data.Books + " WHERE id2=? AND V=?" ,new String [] {H,J,K});
-            cursor.moveToFirst();
-            if(cursor.getCount()>0){
-            *
-            * cursor.close();
-db.close();
-*
-*
-* CREATE TRIGGER if not exists add_student
-   AFTER INSERT
- ON[student]
-   for each row
-     BEGIN
-        insert into library values (2 , new.sid );
-        insert into canteen values (3 , new.sid);
-     END;
-     *
-     *
-     * CREATE VIEW view_name AS
-    SELECT A.time AS Start, B.time AS Stop
-    FROM time A, time B
-    WHERE A.booksId+1=B.booksId
-        AND A.bool=1
-        AND B.bool=0
-        * */
     }
 
 
@@ -85,11 +62,12 @@ db.close();
     private void showingDefaultBooksList() {
         RecyclerView recyclerView = findViewById(R.id.recycleView);
 
+SearchView search = findViewById(R.id.searchView);
 
         dataBase data = new dataBase(this);
 
 
-        BooksAdapter usersAdapter = new BooksAdapter(data.getBooks(), MainPage.this);
+        final BooksAdapter usersAdapter = new BooksAdapter(data.getBooks(), MainPage.this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(MainPage.this));
         recyclerView.addItemDecoration(new DividerItemDecoration(MainPage.this,DividerItemDecoration.VERTICAL));
@@ -106,6 +84,24 @@ db.close();
 
             }
         });
+
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                usersAdapter.getFilter().filter(s);
+
+                return false;
+            }
+        });
+
+
     }
 
     private void filter_dialog() {
@@ -128,7 +124,7 @@ db.close();
     }
 
     @Override
-    public void selectedUser(BookModel bookModel) {
+    public void selectedUser(final BookModel bookModel) {
 
 
         final Dialog d = new Dialog(this);
@@ -138,25 +134,50 @@ db.close();
         TextView bookDetails = d.findViewById(R.id.bookDetails) ;
 
 
-
         String book_name = bookModel.getTitle();
         String acquired = bookModel.getAcquired()==0?"purchase":bookModel.getAcquired()==1?"donation":"loan";
-        String top_rated = bookModel.getTop_rated()==1?"⭐":"";
+        String top_rated = bookModel.getTop_rated()==1?"top rated ⭐ \n":"";
 
 
-        bookDetails.setText(top_rated.isEmpty()?"":"top_rated "+top_rated+"\n"+"book_name "+book_name+"\n"+"acquired through "+acquired);
+        bookDetails.setText(top_rated+"book name "+book_name+"\n"+"acquired through "+acquired);
+
+//todo check the entries for borrowing or return
+//todo check registered users (NOT PRIORITY)
+
+        Button borrow_Or_Return_book = d.findViewById(R.id.borrowOrReturnBook) ;
 
 
+        final dataBase db = new dataBase(MainPage.this);
 
-        Button borrow_book = d.findViewById(R.id.borrowBook) ;
+        //check the entry table for a user record
+        if(db.checkEntryRecord(bookModel.getId(),userID))
+            borrow_Or_Return_book.setText("Return Book");
+            else
+            borrow_Or_Return_book.setText("Borrow Book");
 
-        borrow_book.setOnClickListener(new View.OnClickListener() {
+
+        borrow_Or_Return_book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+if( ((Button)v).getText().toString().equals("Return Book")) {
+    db.returnBook(MainPage.this, bookModel.getId(), userID);
+    ((Button) v).setText("Borrow book");
 
-                //TODO SEND TO BORROW METHOD
+}else {
+    try {
+        if (db.borrowBook(bookModel.getId(), Integer.parseInt(userID), bookModel.getDuration()) == false)
+            Toast.makeText(MainPage.this, "Book isn't for borrowing", Toast.LENGTH_SHORT).show();
+        else {
 
+            Toast.makeText(MainPage.this, "Book borrowed successfully", Toast.LENGTH_SHORT).show();
+            ((Button) v).setText("Return Book");
+
+        }
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+}
 
             }
         });

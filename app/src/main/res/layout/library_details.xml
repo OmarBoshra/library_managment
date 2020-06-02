@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:padding="10dp"
+    android:background="@drawable/shape"
+
+    >
+<!--filter by or details-->
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:id="@+id/sdt"
+        android:padding="8dp"
+
+
+        android:text="Library details"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+
+        android:textColor="@color/darkrgraybrown"
+        android:layout_weight="1"
+android:text="Books number"
+        android:textAllCaps="false" />
+ <TextView
+        android:id="@+id/booksNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+     android:textColor="@color/darkrgraybrown"
+
+
+     android:layout_weight="1"
+     />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:textColor="@color/darkrgraybrown"
+            android:layout_weight="1"
+            android:text="Number of Top rated books"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/total_topRated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/darkrgraybrown"
+
+
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:textColor="@color/darkrgraybrown"
+            android:layout_weight="1"
+            android:text="Staff number"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/staffnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/darkrgraybrown"
+
+
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:textColor="@color/darkrgraybrown"
+            android:layout_weight="1"
+            android:text="Awards number"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/awards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/darkrgraybrown"
+
+
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+
+            android:textColor="@color/darkrgraybrown"
+            android:layout_weight="1"
+            android:text="Computers number"
+            android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/computers_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/darkrgraybrown"
+
+
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -2,12 +2,14 @@ package com.android.librarymanagment.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,9 +35,45 @@ public class signin extends AppCompatActivity {
 
     private void buttons(final EditText email,final EditText password) {
 
+        ImageButton librayDetails = findViewById(R.id.library_details);
         Button Register = findViewById(R.id.register);
         Button Login = findViewById(R.id.login);
 
+
+        librayDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataBase db = new dataBase(signin.this);
+
+              int [] details =db.libraryDetails();
+
+                libraryDetailsDialog(details);
+
+            }
+
+            private void libraryDetailsDialog(int [] details) {
+
+
+                final Dialog d = new Dialog(signin.this);
+                d.setContentView(R.layout.library_details);
+                d.getWindow().getDecorView().setBackgroundResource(android.R.color.transparent);
+
+
+                TextView booksNumber = d.findViewById(R.id.booksNumber);
+                TextView total_topRated = d.findViewById(R.id.total_topRated);
+                TextView staffnumber = d.findViewById(R.id.staffnumber);
+                TextView awards = d.findViewById(R.id.awards);
+                TextView computers_number = d.findViewById(R.id.computers_number);
+
+                booksNumber.setText(details[0]);
+                booksNumber.setText(details[1]);
+                booksNumber.setText(details[2]);
+                booksNumber.setText(details[3]);
+                booksNumber.setText(details[4]);
+
+
+            }
+        });
 
 
         Register.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +81,7 @@ public class signin extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                Intent view = new Intent(signin.this, MainPage.class);
+                Intent view = new Intent(signin.this, registration.class);
                 startActivity(view);
             }
         });
@@ -60,11 +98,17 @@ public class signin extends AppCompatActivity {
                 else {
                     dataBase data = new dataBase(signin.this);
 
+                    String user_id;
                     String user_name;
-                    if ((user_name = data.signIn(user_email, user_password)).isEmpty())
+
+                    if ((data.signIn(user_email, user_password)).length==0)
                         Toast.makeText(signin.this, "No register account please register", Toast.LENGTH_SHORT).show();
                     else {
+                        user_id=data.signIn(user_email, user_password)[0];
+                        user_name=data.signIn(user_email, user_password)[1];
+
                         Intent view = new Intent(signin.this, MainPage.class);
+                        view.putExtra("user_id", user_id);
                         view.putExtra("user_name", user_name);
                         startActivity(view);
 

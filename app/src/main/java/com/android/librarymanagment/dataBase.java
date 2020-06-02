@@ -3,13 +3,22 @@ package com.android.librarymanagment;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
+import com.android.librarymanagment.activities.MainPage;
 import com.android.librarymanagment.models.BookModel;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class dataBase extends SQLiteOpenHelper {
 
@@ -231,16 +240,49 @@ public class dataBase extends SQLiteOpenHelper {
 
             //SAMPLE DATA
             //books
-            db.execSQL("INSERT INTO   books   (  title  ,  acquired  , duration  ,  top_rated  ) Values ('mirdad',1,'01-03','1')");
+            db.execSQL("INSERT INTO   books   (  title  ,  acquired  , duration  ,  top_rated  ) Values ('mirdad',1,'7','1')");
+            db.execSQL("INSERT INTO   books   (  title  ,  acquired  , duration  ,  top_rated  ) Values ('treasure island',2,'7','0')");
+
+            db.execSQL("INSERT INTO   books   (  title  ,  acquired  , duration  ,  top_rated  ) Values ('macbeth',0,'7','0')");
+
+            //registration
+
+            db.execSQL("INSERT INTO   restrictions_books   (  book_id  ,  restriction_type  , deadline ) Values ('1',0,'')");
+
+            db.execSQL("INSERT INTO   restrictions_books   (  book_id  ,  restriction_type  , deadline ) Values ('2',1,'2020-6-20')");
+
+
+            db.execSQL("INSERT INTO   restrictions_books   (  book_id  ,  restriction_type  , deadline ) Values ('3',1,'2020-5-20')");
+
 
             //Users
             db.execSQL("INSERT INTO   users   (  name  ,  user_type  , email  ,  password  ) Values ('omar',0,'osarious2@gmail.com','123456')");
+
+
 
         }
 
 // TODO: GENERAL
 
-    public void register(String email,String password,String user_name,int user_type){
+    public int []  libraryDetails(){
+        Cursor cursor = getWritableDatabase().rawQuery("SELECT "+LIBRARY_STATISTICS_BOOKS_NUMBER+","+LIBRARY_STATISTICS_TOP_RATED_BOOKS+","+LIBRARY_STATISTICS_STAFF_NUMBER+","+LIBRARY_STATISTICS_AWARDS_NUMBER+","+LIBRARY_STATISTICS_COMPUTERS_NUMBER+" FROM " + dataBase.TABLE_LIBRARY_STATISTICS, null);
+
+        cursor.moveToFirst();
+
+        int booksNumber=cursor.getInt(0);
+        int topRated=cursor.getInt(1);
+        int staffNumber=cursor.getInt(2);
+        int awardsNumber=cursor.getInt(3);
+        int computersNumber=cursor.getInt(4);
+
+
+
+        return new int []{booksNumber,topRated,staffNumber,awardsNumber,computersNumber};
+
+    }
+
+
+    public long register(String email,String password,String user_name,int user_type){
 
 
         SQLiteDatabase db =getWritableDatabase();
@@ -249,32 +291,36 @@ public class dataBase extends SQLiteOpenHelper {
 
 
         values.put(this.USERS_NAME, user_name);
+        values.put(this.USERS_USER_TYPE,user_type);
         values.put(this.USERS_EMAIL, email);
         values.put(this.USERS_PASSWORD,password );
-        values.put(this.USERS_USER_TYPE,user_type );
 
-        db.insert(this.TABLE_ENTRIES, null, values);
+        db.insert(this.TABLE_USERS, null, values);
+
+        long numRows = DatabaseUtils.queryNumEntries(db, USERS_ID);
+
 
         db.close();
 
+        return numRows;
     }
 
-    public String signIn(String email,String password){
+    public String [] signIn(String email,String password){
 
 
-        Cursor cursor = getWritableDatabase().rawQuery("SELECT "+USERS_NAME+" FROM " + dataBase.TABLE_USERS+ " WHERE "+USERS_EMAIL+"=? AND "+USERS_PASSWORD+"=?",new String [] {email, password});
-
+        Cursor cursor = getWritableDatabase().rawQuery("SELECT "+USERS_ID+","+USERS_NAME+" FROM " + dataBase.TABLE_USERS+ " WHERE "+USERS_EMAIL+"=? AND "+USERS_PASSWORD+"=?",new String [] {email, password});
 
 
         if(cursor.getCount()==1){
             cursor.moveToFirst();
 
-            String name =cursor.getString(0);
+            String user_id =cursor.getString(0);
+            String name =cursor.getString(1);
             cursor.close();
             close();
-           return  name;
+           return  new String[] {user_id,name};
         }else
-            return "";
+            return new String[]{};
 
     }
 
@@ -285,7 +331,7 @@ public class dataBase extends SQLiteOpenHelper {
 
         List<BookModel> bookModelList = new ArrayList<>();
 
-        Cursor cursor = getWritableDatabase().rawQuery("select * from " + dataBase.TABLE_BOOKS, null);
+        Cursor cursor = getWritableDatabase().rawQuery("SELECT * FROM " + dataBase.TABLE_BOOKS, null);
 
         cursor.getColumnCount();
 
@@ -309,21 +355,172 @@ public class dataBase extends SQLiteOpenHelper {
 
     //TODO FOR STUDENTS
 
-    public void borrowBook(int bookId,int userId,String bookDuration){
+
+
+    public boolean checkEntryRecord(int bookId,String userId){
+
+        Cursor cursor = getWritableDatabase().rawQuery("SELECT "+ENTRIES_BOOK_ID+","+ENTRIES_USER_ID+" FROM " + dataBase.TABLE_ENTRIES+" WHERE "+ENTRIES_BOOK_ID+"=? AND "+ENTRIES_USER_ID+"=?",new String [] {String.valueOf(bookId), String.valueOf(userId)});
+
+
+        if(cursor.getCount()>0) {
+            cursor.close();
+            close();
+            return true;
+        } else {
+            cursor.close();
+            close();
+
+            return false;
+        }
+
+    }
+
+    public void returnBook(Context context,int bookId, String userId)  {
+
+//trigger CREATE TRIGGER update_customer_address UPDATE OF address ON customers
+//  BEGIN
+//    UPDATE orders SET address = new.address WHERE customer_name = old.name;
+//  END;
+
+        SQLiteDatabase db =getWritableDatabase();
+
+        Cursor date=db.rawQuery("SELECT date('now')",null);
+
+        date.moveToFirst();
+
+        String todaysDate=date.getString(0);
+
+        date.close();
+
+        Cursor restrictionCursor=db.rawQuery("SELECT "+ENTRIES_BORROW_TIME+"," +ENTRIES_BOOK_DURATION+" FROM "+ dataBase.TABLE_ENTRIES+" WHERE "+ENTRIES_BOOK_ID+"=? AND "+ENTRIES_USER_ID+"=?",new String [] {String.valueOf(bookId),userId});
+
+
+        // check if the time was exceeded\
+
+        restrictionCursor.moveToFirst();
+
+        String borrowTime=restrictionCursor.getString(0);
+        String bookDuration=restrictionCursor.getString(1);
+        restrictionCursor.close();
+
+        SimpleDateFormat finalDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+
+        Date borrow_date = null;
+        Date todays_Date=null;
+        try {
+            borrow_date = finalDateFormat.parse(borrowTime);
+            todays_Date = finalDateFormat.parse(todaysDate);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        Calendar calendar=(Calendar.getInstance());
+
+        calendar.setTime(borrow_date);
+
+        calendar.add(Calendar.DAY_OF_YEAR, Integer.parseInt(bookDuration));
+
+        ContentValues values = new ContentValues();
+
+        if(calendar.getTimeInMillis()<=(todays_Date.getTime())){
+
+
+//ADD RETURN
+
+            values.put(this.ENTRIES_RETURN_TIME, todaysDate);
+
+            db.update(this.TABLE_ENTRIES, values, ENTRIES_BOOK_ID+"=? AND "+ENTRIES_USER_ID+"=?", new String[]{String.valueOf(bookId), userId});
+
+            values.clear();
+
+            //ADD FINE
+
+            values.put(this.FINES_ENTRY_ID, bookId);
+            values.put(this.FINES_AMOUNT, userId);
+
+
+            db.insert(this.TABLE_FINES, null, values);
+
+            Toast.makeText(context, "Return successful fined 5 euros", Toast.LENGTH_LONG).show();
+
+        }else {
+
+
+            //REMOVE ENTRY
+
+            db.delete(this.TABLE_ENTRIES, ENTRIES_BOOK_ID + "=? AND " + ENTRIES_USER_ID+"=?", new String[]{String.valueOf(bookId), userId});
+
+            Toast.makeText(context, "Return successful", Toast.LENGTH_SHORT).show();
+
+        }
+
+        restrictionCursor.close();
+        close();
+
+
+    }
+    public boolean borrowBook(int bookId,int userId,String bookDuration) throws ParseException {
 
     SQLiteDatabase db =getWritableDatabase();
-    ContentValues values = new ContentValues();
+
+        Cursor date=db.rawQuery("SELECT date('now')",null);
+        date.moveToFirst();
+
+        String todaysDate=date.getString(0);
+
+        //check entry table first then restrictions
+
+        Cursor restrictionCursor=db.rawQuery("SELECT "+RESTRICTIONS_BOOKS_RESTRICTION_TYPE+"," +RESTRICTIONS_BOOKS_DEADLINE+" FROM "+ dataBase.TABLE_RESTRICTIONS_BOOKS+" WHERE "+RESTRICTIONS_BOOKS_BOOK_ID+"=?",new String [] {String.valueOf(bookId)});
+
+        if(restrictionCursor.getCount()>0){
+            restrictionCursor.moveToFirst();
+
+            if(restrictionCursor.getInt(0)==0)// not for borrowing
+                return false;
+            else{// there is a valid dead line and it will be subtracted from todays date
+
+               String bookDeadLine= restrictionCursor.getString(1);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+                Date todays_Date = dateFormat.parse(todaysDate);
+                Date Book_deadline = dateFormat.parse(bookDeadLine);
 
 
+                long diff = Book_deadline.getTime()-todays_Date.getTime();
+
+
+                long diffInDays = TimeUnit.MILLISECONDS.toDays(diff);
+
+
+                bookDuration= String.valueOf(diffInDays);
+
+                restrictionCursor.close();
+
+            }
+
+
+
+        }
+
+
+
+        ContentValues values = new ContentValues();
 
     values.put(this.ENTRIES_BOOK_ID, bookId);
     values.put(this.ENTRIES_USER_ID, userId);
-    values.put(this.ENTRIES_BORROW_TIME, String.valueOf(db.compileStatement("SELECT date('now')")));
+    values.put(this.ENTRIES_BORROW_TIME, todaysDate);
     values.put(this.ENTRIES_BOOK_DURATION, bookDuration);
 
     db.insert(this.TABLE_ENTRIES, null, values);
 
+        date.close();
         db.close();
+
+        return true;
 }
 
 

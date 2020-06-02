@@ -6,22 +6,44 @@
 
     >
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
 
     <TextView
 
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:text="Sign in"
 
+        android:layout_weight="4"
+
+
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
 
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/ic_input_get"
+        android:background="@color/colorPrimaryDark"
+android:id="@+id/library_details"
+        android:layout_weight="1"
+        />
 
+</LinearLayout>
 
     <EditText
+
+
+        android:textCursorDrawable="@color/darkrgraybrown"
+
+
         android:id="@+id/email"
 
         style="@style/Widget.AppCompat.EditText"
@@ -43,6 +65,9 @@
         android:textStyle="italic" />
 
     <EditText
+
+        android:textCursorDrawable="@color/darkrgraybrown"
+
 
         android:id="@+id/password"
 
