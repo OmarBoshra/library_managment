@@ -32,6 +32,17 @@
         android:layout_weight="1"
 
         android:textAllCaps="false" />
+
+
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/languages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:entries="@array/languages" />
+
     <LinearLayout
 
         android:id="@+id/Buttons"

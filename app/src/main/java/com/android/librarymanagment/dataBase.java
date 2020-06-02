@@ -121,47 +121,46 @@ public class dataBase extends SQLiteOpenHelper {
         public void onCreate(SQLiteDatabase db) {
 
 
-
-       final String TABLE_CREATE_LIBRARY_STATISTICS =
-                "CREATE TABLE "+ TABLE_LIBRARY_STATISTICS +" ("+
-                        LIBRARY_STATISTICS_ID + " INTEGER PRIMARY KEY, "+
-                        LIBRARY_STATISTICS_BOOKS_NUMBER + " INTEGER, "+
-                        LIBRARY_STATISTICS_TOP_RATED_BOOKS + " INTEGER, "+
-                        LIBRARY_STATISTICS_STAFF_NUMBER + " INTEGER, "+
-                        LIBRARY_STATISTICS_AWARDS_NUMBER + " INTEGER, "+
-                        LIBRARY_STATISTICS_COMPUTERS_NUMBER + " INTEGER)";
+            final String TABLE_CREATE_LIBRARY_STATISTICS =
+                    "CREATE TABLE " + TABLE_LIBRARY_STATISTICS + " (" +
+                            LIBRARY_STATISTICS_ID + " INTEGER PRIMARY KEY, " +
+                            LIBRARY_STATISTICS_BOOKS_NUMBER + " INTEGER, " +
+                            LIBRARY_STATISTICS_TOP_RATED_BOOKS + " INTEGER, " +
+                            LIBRARY_STATISTICS_STAFF_NUMBER + " INTEGER, " +
+                            LIBRARY_STATISTICS_AWARDS_NUMBER + " INTEGER, " +
+                            LIBRARY_STATISTICS_COMPUTERS_NUMBER + " INTEGER)";
 
 
             final String TABLE_CREATE_BOOKS =
-                    "CREATE TABLE "+ TABLE_BOOKS +" ("+
-                            BOOKS_ID + " INTEGER PRIMARY KEY, "+
-                            BOOKS_TITLE + " TEXT, "+
-                            BOOKS_ACQURIED + " INTEGER, "+//0,1,2
-                            BOOKS_DURATION + " TEXT, "+
+                    "CREATE TABLE " + TABLE_BOOKS + " (" +
+                            BOOKS_ID + " INTEGER PRIMARY KEY, " +
+                            BOOKS_TITLE + " TEXT, " +
+                            BOOKS_ACQURIED + " INTEGER, " +//0,1,2
+                            BOOKS_DURATION + " TEXT, " +
                             BOOKS_TOP_RATED + " INTEGER)";//0,1
 
 
 //        final String books_title_index = " CREATE INDEX " + Books_title_idx + " ON "+ TABLE_BOOKS +"("+BOOKS_TITLE+")";
 
-        final String TABLE_CREATE_CATEGORIES =
-                "CREATE TABLE "+ TABLE_CATEGORIES +" ("+
-                        CATEGORIES_ID + " INTEGER PRIMARY KEY, "+
-                        CATEGORIES_BOOK_ID + " INTEGER, "+
-                        CATEGORIES_CATEGORY_NAME + " TEXT)";
+            final String TABLE_CREATE_CATEGORIES =
+                    "CREATE TABLE " + TABLE_CATEGORIES + " (" +
+                            CATEGORIES_ID + " INTEGER PRIMARY KEY, " +
+                            CATEGORIES_BOOK_ID + " INTEGER, " +
+                            CATEGORIES_CATEGORY_NAME + " TEXT)";
 //
 //
 //
-        final String TABLE_CREATE_BOOK_FORMATS =
-                "CREATE TABLE "+ TABLE_BOOK_FORMATS +" ("+
-                        BOOK_FORMATS_ID + " INTEGER PRIMARY KEY, "+
-                        BOOK_FORMATS_BOOK_ID + " INTEGER, "+
-                        BOOK_FORMATS_FORMAT + " INTEGER)";
+            final String TABLE_CREATE_BOOK_FORMATS =
+                    "CREATE TABLE " + TABLE_BOOK_FORMATS + " (" +
+                            BOOK_FORMATS_ID + " INTEGER PRIMARY KEY, " +
+                            BOOK_FORMATS_BOOK_ID + " INTEGER, " +
+                            BOOK_FORMATS_FORMAT + " INTEGER)";
 //
 
             final String TABLE_CREATE_AUTHORS =
-                    "CREATE TABLE "+ TABLE_AUTHORS +" ("+
-                            AUTHORS_ID + " INTEGER PRIMARY KEY, "+
-                            AUTHORS_BOOK_ID + " INTEGER, "+
+                    "CREATE TABLE " + TABLE_AUTHORS + " (" +
+                            AUTHORS_ID + " INTEGER PRIMARY KEY, " +
+                            AUTHORS_BOOK_ID + " INTEGER, " +
                             AUTHORS_NAME + " TEXT)";
 
 
@@ -172,43 +171,42 @@ public class dataBase extends SQLiteOpenHelper {
 //                        PUBLICATIONS_PUBLICATION_NAME + " TEXT, "+
 //                        PUBLICATIONS_PUBLICATION_NUMBER + " TEXT)";
 //
-        final String TABLE_CREATE_LANGUAGES =
-                "CREATE TABLE "+ TABLE_LANGUAGES +" ("+
-                        LANGUAGES_ID + " INTEGER PRIMARY KEY, "+
-                        LANGUAGES_BOOK_ID + " INTEGER, "+
-                        LANGUAGES_LANG_NAME + " TEXT, "+
-                        LANGUAGES_COPY_NUMBER + " INTEGER)";
-
+            final String TABLE_CREATE_LANGUAGES =
+                    "CREATE TABLE " + TABLE_LANGUAGES + " (" +
+                            LANGUAGES_ID + " INTEGER PRIMARY KEY, " +
+                            LANGUAGES_BOOK_ID + " INTEGER, " +
+                            LANGUAGES_LANG_NAME + " TEXT, " +
+                            LANGUAGES_COPY_NUMBER + " INTEGER)";
 
 
             final String TABLE_CREATE_ENTRIES =
-                    "CREATE TABLE "+ TABLE_ENTRIES +" ("+
-                            ENTRIES_ID + " INTEGER PRIMARY KEY, "+
-                            ENTRIES_BOOK_ID + " INTEGER, "+
-                            ENTRIES_USER_ID + " INTEGER, "+
-                            ENTRIES_BORROW_TIME + " TEXT, "+
-                            ENTRIES_RETURN_TIME + " TEXT, "+
+                    "CREATE TABLE " + TABLE_ENTRIES + " (" +
+                            ENTRIES_ID + " INTEGER PRIMARY KEY, " +
+                            ENTRIES_BOOK_ID + " INTEGER, " +
+                            ENTRIES_USER_ID + " INTEGER, " +
+                            ENTRIES_BORROW_TIME + " TEXT, " +
+                            ENTRIES_RETURN_TIME + " TEXT, " +
                             BOOKS_DURATION + " TEXT)";
 
             final String TABLE_CREATE_FINES =
-                    "CREATE TABLE "+ TABLE_FINES +" ("+
-                            FINES_ID + " INTEGER PRIMARY KEY, "+
-                            FINES_ENTRY_ID + " INTEGER, "+
+                    "CREATE TABLE " + TABLE_FINES + " (" +
+                            FINES_ID + " INTEGER PRIMARY KEY, " +
+                            FINES_ENTRY_ID + " INTEGER, " +
                             FINES_AMOUNT + " INTEGER)";
 
-           final String TABLE_CREATE_USERS =
-                    "CREATE TABLE "+ TABLE_USERS +" ("+
-                            USERS_ID + " INTEGER PRIMARY KEY, "+
-                            USERS_NAME + " TEXT, "+
-                            USERS_USER_TYPE + " INTEGER, "+
-                            USERS_EMAIL + " TEXT UNIQUE, "+
+            final String TABLE_CREATE_USERS =
+                    "CREATE TABLE " + TABLE_USERS + " (" +
+                            USERS_ID + " INTEGER PRIMARY KEY, " +
+                            USERS_NAME + " TEXT, " +
+                            USERS_USER_TYPE + " INTEGER, " +
+                            USERS_EMAIL + " TEXT UNIQUE, " +
                             USERS_PASSWORD + " TEXT)";
 
             final String TABLE_CREATE_RESTRICTIONS_BOOKS =
-                    "CREATE TABLE "+ TABLE_RESTRICTIONS_BOOKS +" ("+
-                            RESTRICTIONS_BOOKS_ID + " INTEGER PRIMARY KEY, "+
-                            RESTRICTIONS_BOOKS_BOOK_ID + " INTEGER, "+
-                            RESTRICTIONS_BOOKS_RESTRICTION_TYPE + " INTEGER, "+
+                    "CREATE TABLE " + TABLE_RESTRICTIONS_BOOKS + " (" +
+                            RESTRICTIONS_BOOKS_ID + " INTEGER PRIMARY KEY, " +
+                            RESTRICTIONS_BOOKS_BOOK_ID + " INTEGER, " +
+                            RESTRICTIONS_BOOKS_RESTRICTION_TYPE + " INTEGER, " +
                             RESTRICTIONS_BOOKS_DEADLINE + " TEXT)";
 
 //        final String t3 = "CREATE VIEW " + Books_view + "AS SELECT" +
@@ -225,18 +223,18 @@ public class dataBase extends SQLiteOpenHelper {
 //        final String t3 = "CREATE TABLE " + Table3 + "(" +
 //                serial2 + " TEXT " + ")";
 
-        db.execSQL(TABLE_CREATE_LIBRARY_STATISTICS);
-        db.execSQL(TABLE_CREATE_BOOKS);
+            db.execSQL(TABLE_CREATE_LIBRARY_STATISTICS);
+            db.execSQL(TABLE_CREATE_BOOKS);
 //        db.execSQL(books_title_index);
-        db.execSQL(TABLE_CREATE_AUTHORS);
-        db.execSQL(TABLE_CREATE_BOOK_FORMATS);
-        db.execSQL(TABLE_CREATE_CATEGORIES);
-        db.execSQL(TABLE_CREATE_LANGUAGES);
-        db.execSQL(TABLE_CREATE_RESTRICTIONS_BOOKS);
+            db.execSQL(TABLE_CREATE_AUTHORS);
+            db.execSQL(TABLE_CREATE_BOOK_FORMATS);
+            db.execSQL(TABLE_CREATE_CATEGORIES);
+            db.execSQL(TABLE_CREATE_LANGUAGES);
+            db.execSQL(TABLE_CREATE_RESTRICTIONS_BOOKS);
 //        db.execSQL(TABLE_CREATE_PUBLICATIONS);
-        db.execSQL(TABLE_CREATE_ENTRIES);
-        db.execSQL(TABLE_CREATE_FINES);
-        db.execSQL(TABLE_CREATE_USERS);
+            db.execSQL(TABLE_CREATE_ENTRIES);
+            db.execSQL(TABLE_CREATE_FINES);
+            db.execSQL(TABLE_CREATE_USERS);
 
             //SAMPLE DATA
             //books
@@ -258,11 +256,14 @@ public class dataBase extends SQLiteOpenHelper {
             //Users
             db.execSQL("INSERT INTO   users   (  name  ,  user_type  , email  ,  password  ) Values ('omar',0,'osarious2@gmail.com','123456')");
 
+            //library
+            db.execSQL("INSERT INTO   library_statistics   (  books_number  ,  top_rated_books  , staff_number  ,  awards_number ,computers_number ) Values ('3',1,'5','10','6')");
 
 
         }
 
-// TODO: GENERAL
+
+
 
     public int []  libraryDetails(){
         Cursor cursor = getWritableDatabase().rawQuery("SELECT "+LIBRARY_STATISTICS_BOOKS_NUMBER+","+LIBRARY_STATISTICS_TOP_RATED_BOOKS+","+LIBRARY_STATISTICS_STAFF_NUMBER+","+LIBRARY_STATISTICS_AWARDS_NUMBER+","+LIBRARY_STATISTICS_COMPUTERS_NUMBER+" FROM " + dataBase.TABLE_LIBRARY_STATISTICS, null);
