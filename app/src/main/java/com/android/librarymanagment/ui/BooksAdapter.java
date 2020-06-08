@@ -46,13 +46,13 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.UsersAdapter
         BookModel bookModel = bookModelList.get(position);
 
         String book_name = bookModel.getTitle();
-        int book_acquired = bookModel.getAcquired();
+        String book_acquired = bookModel.getAcquired();
         int top_rated = bookModel.getTop_rated();
         String book_duration = bookModel.getDuration();
 
         holder.bookName.setText(book_name);
         holder.topRated.setText(top_rated==1?"⭐":"");
-        holder.acquired.setText(book_acquired==0?"purchase":book_acquired==1?"donation":"loan");
+        holder.acquired.setText(book_acquired);
         holder.duration.setText("Duration in days "+book_duration);
 
     }

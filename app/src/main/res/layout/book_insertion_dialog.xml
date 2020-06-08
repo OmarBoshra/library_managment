@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/shape"
+
+    >
+<!--filter by or details-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:id="@+id/sdt"
+        android:padding="8dp"
+
+
+        android:text="Add Book"
+        />
+
+    <EditText
+        android:id="@+id/addBook_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:textColor="@color/colorPrimaryDark"
+
+
+        android:hint="Add title"
+        android:inputType="text"
+
+        android:textAllCaps="false" />
+    <EditText
+        android:id="@+id/add_aquired"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+
+        android:textColor="@color/colorPrimaryDark"
+android:hint="Add acquired through"
+
+        android:inputType="text"
+
+        android:textAllCaps="false" />
+
+
+    <EditText
+        android:id="@+id/add_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="number"
+
+
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add duration"
+
+        android:textAllCaps="false" />
+
+
+    <CheckBox
+        android:id="@+id/add_toprated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        app:buttonTint="@color/colorPrimaryDark"
+
+android:text="top rated"
+        android:textColor="@color/colorPrimaryDark"
+
+
+        android:textAllCaps="false" />
+
+
+
+    <EditText
+        android:id="@+id/add_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add language"
+
+        android:textAllCaps="false" />
+
+    <EditText
+        android:id="@+id/add_format"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+        android:inputType="text"
+
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add format"
+
+        android:textAllCaps="false" />
+
+
+    <EditText
+        android:id="@+id/add_publication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add publication"
+
+        android:textAllCaps="false" />
+
+    <EditText
+        android:id="@+id/add_edition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add edition number"
+
+        android:textAllCaps="false" />
+
+    <EditText
+        android:id="@+id/add_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add category"
+
+        android:textAllCaps="false" />
+
+
+    <EditText
+        android:id="@+id/add_isbn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add ISBN"
+
+        android:textAllCaps="false" />
+
+
+    <EditText
+        android:id="@+id/add_authors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add author(s) separated by comma"
+
+        android:textAllCaps="false" />
+
+    <EditText
+        android:id="@+id/add_copies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add number of copies"
+
+
+        android:textAllCaps="false" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+    <RadioButton
+        android:id="@+id/add_restriction1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+android:textColorHint="@color/colorPrimaryDark"
+
+        android:hint="Restriction NB"
+
+
+        android:layout_weight="1"
+
+        android:textAllCaps="false" />
+    <RadioButton
+        android:id="@+id/add_restriction2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+
+
+        android:hint="Restriction deadline"
+
+        android:textColorHint="@color/colorPrimaryDark"
+
+        android:layout_weight="1"
+
+        android:textAllCaps="false" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/add_deadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:choiceMode="multipleChoice"
+
+        android:inputType="text"
+
+        android:textColor="@color/colorPrimaryDark"
+
+        android:hint="Add deadline"
+
+        android:textAllCaps="false" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+        <Button
+            android:id="@+id/save"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Submit"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="4dp"
+
+            android:layout_margin="4dp"
+
+android:layout_weight="1"
+
+            android:textColor="@color/colorAccent"
+
+
+            />
+
+        <Button
+            android:id="@+id/newBook"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="New Book"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="4dp"
+
+            android:layout_margin="4dp"
+
+            android:layout_weight="2"
+
+
+            android:textColor="@color/colorAccent"
+
+
+            />
+
+
+</LinearLayout>
+    </LinearLayout>
+</ScrollView>

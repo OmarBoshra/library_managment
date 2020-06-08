@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-   android:padding="10dp"
+    android:layout_height="match_parent"
+   android:padding="15dp"
     android:background="@drawable/shape"
 
     >
@@ -26,10 +26,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
-        android:background="@color/colorPrimary"
         android:choiceMode="multipleChoice"
 
         android:layout_weight="1"
+
+        android:textColor="@color/colorPrimaryDark"
+
 
         android:textAllCaps="false" />
 
@@ -40,28 +42,82 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:entries="@array/lang"
 
-        android:entries="@array/languages" />
+        android:padding="8dp"
 
-    <LinearLayout
+      />
 
-        android:id="@+id/Buttons"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/formats"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
 
-        >
+        android:entries="@array/format"
+
+        android:padding="8dp"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/publications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:entries="@array/publication"
+
+        android:padding="8dp"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/editions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:entries="@array/edition"
+        android:padding="8dp"
+
+
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:entries="@array/category"
+        android:padding="8dp"
+
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/authors"
+android:padding="8dp"
+
+        android:gravity="center"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/copies"
+
+        android:padding="8dp"
+
+        />
+
         <Button
             android:id="@+id/borrowOrReturnBook"
 
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:text="Borrow Book"
+            android:text="Submit"
             android:background="@color/colorPrimaryDark"
             android:layout_marginTop="4dp"
-android:layout_weight="1"
 
             android:layout_margin="4dp"
 
@@ -71,9 +127,6 @@ android:layout_weight="1"
 
 
             />
-
-
-    </LinearLayout>
 
 
 </LinearLayout>

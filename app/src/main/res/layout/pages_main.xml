@@ -35,6 +35,19 @@ android:background="@color/colorAccent"
 
 
         <ImageButton
+            android:id="@+id/addBook"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_input_get"
+
+            android:paddingRight="8dp"
+            android:background="@color/colorPrimaryDark"
+
+            android:visibility="gone"
+/>
+
+
+        <ImageButton
             android:id="@+id/filterBy"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

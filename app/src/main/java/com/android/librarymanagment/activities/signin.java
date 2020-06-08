@@ -65,13 +65,13 @@ public class signin extends AppCompatActivity {
                 TextView awards = d.findViewById(R.id.awards);
                 TextView computers_number = d.findViewById(R.id.computers_number);
 
-                booksNumber.setText(details[0]);
-                booksNumber.setText(details[1]);
-                booksNumber.setText(details[2]);
-                booksNumber.setText(details[3]);
-                booksNumber.setText(details[4]);
+                booksNumber.setText(details[0]+"");
+                total_topRated.setText(details[1]+"");
+                staffnumber.setText(details[2]+"");
+                awards.setText(details[3]+"");
+                computers_number.setText(details[4]+"");
 
-
+                d.show();
             }
         });
 
@@ -100,16 +100,19 @@ public class signin extends AppCompatActivity {
 
                     String user_id;
                     String user_name;
+                    String user_type;
 
                     if ((data.signIn(user_email, user_password)).length==0)
                         Toast.makeText(signin.this, "No register account please register", Toast.LENGTH_SHORT).show();
                     else {
                         user_id=data.signIn(user_email, user_password)[0];
                         user_name=data.signIn(user_email, user_password)[1];
+                        user_type=data.signIn(user_email, user_password)[2];
 
                         Intent view = new Intent(signin.this, MainPage.class);
                         view.putExtra("user_id", user_id);
                         view.putExtra("user_name", user_name);
+                        view.putExtra("user_type", user_type);
                         startActivity(view);
 
                     }

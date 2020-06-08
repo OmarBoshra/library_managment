@@ -4,60 +4,58 @@ import java.io.Serializable;
 
 public class BookModel implements Serializable {
 
-    private  int id ;
+    private  long id ;
     private  String title ;
-    private  int acquired ;
+    private  String acquired ;
     private  String duration ;
     private  int top_rated;
 
-
-    public BookModel(int id, String title, int acquired, String duration, int top_rated) {
-        this.id = id;
-        this.title = title;
-        this.acquired = acquired;
-        this.duration = duration;
-        this.top_rated = top_rated;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAcquired(int acquired) {
-        this.acquired = acquired;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public void setTop_rated(int top_rated) {
-        this.top_rated = top_rated;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getAcquired() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAcquired() {
         return acquired;
+    }
+
+    public void setAcquired(String acquired) {
+        this.acquired = acquired;
     }
 
     public String getDuration() {
         return duration;
     }
 
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     public int getTop_rated() {
         return top_rated;
+    }
+
+    public void setTop_rated(int top_rated) {
+        this.top_rated = top_rated;
+    }
+
+    public BookModel(long id, String title, String acquired, String duration, int top_rated) {
+        this.id = id;
+        this.title = title;
+        this.acquired = acquired;
+        this.duration = duration;
+        this.top_rated = top_rated;
     }
 }
 
